@@ -1,0 +1,73 @@
+<html>
+        <head>
+        <title>Ajax Example</title>
+<link rel="stylesheet" type="text/css" href="./lib/resources/css/ext-all.css" />
+<script type="text/javascript" src="./lib/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="./lib/ext-all.js"></script>
+<script language="Javascript">
+        	function postRequest() {
+			var xmlHttp;
+		//step 1
+			if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+
+         			xmlHttp = new XMLHttpRequest();
+       			} 
+			else if (window.ActiveXObject) { // IE
+         			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+       			}
+		//step 2
+			var username=document.frmLogin.username.value;
+			var password=document.frmLogin.password.value;
+			//var url="time1.jsp";
+			xmlHttp.open('POST', "time1.jsp",true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlHttp.send("uname="+username+"&password="+password);
+		//step 4
+    			xmlHttp.onreadystatechange = function() {
+
+        			if (xmlHttp.readyState == 4) {
+//step 5
+					document.getElementById("result").innerHTML =xmlHttp.responseText;
+					//document.frmLogin.b.disabled=true;
+        			}
+				}
+		//step 3
+    			//xmlHttp.send(url);
+
+			
+       		 }
+		
+        </script>
+        </head>
+        <body>
+		<form name="frmLogin" method="post" action="login.jsp">
+			Username :- <input type="text" name="username" onkeyup="postRequest();"><br>
+			Password :- <input type="text" name="password" ><br>
+	   		<input type="button" value="Login" name="b" >
+		</form>
+
+		<div id=result></div>
+        </body>
+        </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+<html> <head>
+<script language="Javascript">
+    function postRequest() {
+			var xmlHttp;
+		//step 1 how to get XHR for browser
+	   			xmlHttp = new XMLHttpRequest();
+		//step 2
+			var username=document.frmLogin.username.value;
+			//var password=document.frmLogin.password.value;
+			var url="time1.jsp?uname="+username;
+			xmlHttp.open('GET', url,true);
+			//step 3
+			xmlHttp.send();
+		//step 4
+    			xmlHttp.onreadystatechange = function() {
+        			if (xmlHttp.readyState == 4) {
+//step 5
+					document.getElementById("result").innerHTML =xmlHttp.responseText;
+				}
+				}
+       		 }
+        </script>
+        </head>        <body>
+		<form name="frmLogin" method="post" action="login.jsp">
+			Username :- <input type="text" name="username" onkeyup="postRequest();"><br>
+			Password :- <input type="text" name="password" ><br>
+	   		<input type="button" value="Login" name="b" >
+		</form>
+		<div id=result></div>
+        </body>
+        </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

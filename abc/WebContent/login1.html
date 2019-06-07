@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<script type="text/javascript"> 
+
+function validate(){ 
+	username=document.getElementById('username').value;
+	password=document.getElementById('password').value;
+	var AJAX = new XMLHttpRequest(); 
+	AJAX.open("GET", "validate.jsp?uname="+username+"&password="+password); 
+	  AJAX.send(); 
+  AJAX.onreadystatechange = function() { 
+	  if(AJAX.readyState == 4 && AJAX.status == 200) { 
+	      var json = eval('(' + AJAX.responseText +')'); 
+	      if(json.valid == 'unavailable')
+	      {
+	          alert('invalid username');
+	          document.getElementById('invalidCredentials').style.display = "block";
+	      }
+	       }
+	} 
+	
+  
+}; 
+</script> 
+
+</head>
+<body>
+<form name="frmLogin" method="post" action="login.jsp">
+Username :- <input type="text" id="username" /><br />
+Password :- <input type="text" id="password" /><br />
+<div id="invalidCredentials" style="display:none">Invalid Credentials</div>
+Remember Me <input type="checkbox" value="set" name="remember_me" />
+<input type="button" value="Login" onclick="validate();" />
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
