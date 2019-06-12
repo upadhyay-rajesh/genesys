@@ -3,7 +3,7 @@
 			//step 1
 				var XMLHTTP = new XMLHttpRequest();
 			//step 2
-				XMLHTTP.open("GET", "aman.js");
+				XMLHTTP.open("GET", "aman.js",true);
 			//step 3
 					XMLHTTP.send();
 			//step 4
